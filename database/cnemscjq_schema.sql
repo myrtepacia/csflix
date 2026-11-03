@@ -2,10 +2,10 @@
 -- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Oct 21, 2026 at 07:51 AM
--- Server version: 11.4.13-MariaDB-cll-lve-log
--- PHP Version: 8.4.26
+-- Host: db
+-- Generation Time: Nov 03, 2026 at 08:07 AM
+-- Server version: 11.4.13-MariaDB-ubu2404
+-- PHP Version: 8.3.36
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cnemscjq_schema`
+-- Database: `csflix`
 --
 
 -- --------------------------------------------------------
@@ -66,7 +66,22 @@ CREATE TABLE `bookings` (
 --
 
 INSERT INTO `bookings` (`id`, `reference`, `qr_token`, `user_id`, `movie_id`, `show_date`, `show_time`, `cinema`, `ticket_count`, `seat_list`, `ticket_price`, `snacks_total`, `total`, `status`, `snack_status`, `snack_number`, `snack_scanned_at`, `snack_sold_at`, `paymongo_checkout_id`, `paymongo_intent_id`, `paymongo_card_intent_id`, `paymongo_wallet_intent_id`, `paymongo_payment_id`, `paymongo_refund_id`, `expires_at`, `paid_at`, `scanned_at`, `scanned_by`, `refunded_at`, `refunded_by`, `created_at`) VALUES
-(347, 'CSF-RT38JS', '9488264bf78ee4987cea28b2587597e7', 248, 1, '2026-10-31', '18:10:00', 1, 1, 'F7', 220, 110, 330, 'paid', 'ordered', 1, NULL, NULL, NULL, 'pi_DwrdybfkRNqq8GeMLVFq7sbB', NULL, 'pi_9Hayb9xFwp2euf6xPoLwdgqk', 'pay_67G1zQZJvPG3DfZryfJrGWbf', NULL, '2026-10-16 14:16:21', '2026-10-16 14:06:40', NULL, NULL, NULL, NULL, '2026-10-16 14:06:21');
+(348, 'CSF-M4GW5D', '4b0ebf3018a7b0b387726015e8b6dccb', 248, 1, '2026-10-18', '18:10:00', 1, 1, 'D4', 220, 0, 220, 'paid', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-16 18:23:00', '2026-10-16 18:15:00', '2026-10-18 18:02:00', 1, NULL, NULL, '2026-10-16 18:13:00'),
+(349, 'CSF-76X9HZ', 'e4bc1ba1524c88f32ec0b1f2312b039a', 251, 1, '2026-10-18', '18:10:00', 1, 1, 'D5', 220, 0, 220, 'paid', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-16 18:26:00', '2026-10-16 18:18:00', '2026-10-18 18:02:00', 1, NULL, NULL, '2026-10-16 18:16:00'),
+(350, 'CSF-44NZUT', 'a4cf10c2ec6e4e1293ae162d55d49aba', 255, 1, '2026-10-18', '18:10:00', 1, 1, 'D6', 220, 0, 220, 'paid', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-16 18:23:00', '2026-10-16 18:15:00', '2026-10-18 18:00:00', 1, NULL, NULL, '2026-10-16 18:13:00'),
+(351, 'CSF-768C95', '683d9c789f3270143bebfab77300944e', 250, 2, '2026-10-19', '16:05:00', 1, 1, 'E3', 220, 0, 220, 'paid', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-17 16:20:00', '2026-10-17 16:12:00', '2026-10-19 15:56:00', 1, NULL, NULL, '2026-10-17 16:10:00'),
+(352, 'CSF-WBGB2E', 'a075460290dd9957e0f593baa9a5f865', 252, 2, '2026-10-19', '16:05:00', 1, 1, 'E4', 220, 0, 220, 'paid', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-17 16:15:00', '2026-10-17 16:07:00', '2026-10-19 15:55:00', 1, NULL, NULL, '2026-10-17 16:05:00'),
+(353, 'CSF-3HUJA3', 'ced3b52bfd67005181b6d1d2b0cd774c', 256, 2, '2026-10-19', '16:05:00', 1, 1, 'E5', 220, 0, 220, 'paid', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-17 16:19:00', '2026-10-17 16:11:00', '2026-10-19 15:56:00', 1, NULL, NULL, '2026-10-17 16:09:00'),
+(354, 'CSF-SANJTY', '915168ad092bef690a40eca417b62436', 253, 3, '2026-10-17', '14:25:00', 2, 1, 'C5', 220, 0, 220, 'paid', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-15 14:36:00', '2026-10-15 14:28:00', '2026-10-17 14:16:00', 1, NULL, NULL, '2026-10-15 14:26:00'),
+(355, 'CSF-HTY9X8', 'bc23662438827a7bce8120a4781b4c85', 257, 3, '2026-10-17', '14:25:00', 2, 1, 'C6', 220, 0, 220, 'paid', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-15 14:40:00', '2026-10-15 14:32:00', '2026-10-17 14:17:00', 1, NULL, NULL, '2026-10-15 14:30:00'),
+(356, 'CSF-DEE2Q9', 'b5b6880b8d9b6d7d6e7151c850159d2c', 254, 7, '2026-10-20', '21:05:00', 2, 1, 'F7', 220, 0, 220, 'paid', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-18 21:17:00', '2026-10-18 21:09:00', '2026-10-20 20:57:00', 1, NULL, NULL, '2026-10-18 21:07:00'),
+(357, 'CSF-PP2GRF', '6340cc1123743db181783c688f5097cb', 258, 7, '2026-10-20', '21:05:00', 2, 1, 'F8', 220, 0, 220, 'paid', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-10-18 21:21:00', '2026-10-18 21:13:00', '2026-10-20 20:55:00', 1, NULL, NULL, '2026-10-18 21:11:00'),
+(358, 'CSF-CA6W4G', '5d9fa95454b2bd563b201003c0338bd7', 248, 2, '2026-10-22', '16:05:00', 1, 1, 'D5', 220, 0, 220, 'expired', NULL, NULL, NULL, NULL, NULL, 'pi_7ZSTBmt2FgBPK11P694ojRuL', NULL, NULL, NULL, NULL, '2026-10-22 12:42:35', NULL, NULL, NULL, NULL, NULL, '2026-10-22 12:32:35'),
+(359, 'CSF-E2LJZ8', 'fa7cf8ceaeaf2e2177bf8a3580eec9ea', 248, 2, '2026-10-23', '16:05:00', 1, 1, 'B5', 220, 0, 220, 'expired', NULL, NULL, NULL, NULL, NULL, 'pi_TMs4kJZDAKEcyukpthySNr5h', NULL, 'pi_MNf29gsbdpB1U9XcUrTaS8pK', NULL, NULL, '2026-10-23 14:23:16', NULL, NULL, NULL, NULL, NULL, '2026-10-23 14:13:16'),
+(360, 'CSF-UPJJLJ', '588f6d6fef3932d2294778bd4f604ccc', 248, 2, '2026-10-26', '20:10:00', 1, 1, 'B4', 220, 110, 330, 'expired', NULL, NULL, NULL, NULL, NULL, 'pi_mpPdr4gNZUMNwVNLLZc8oXjf', NULL, 'pi_cNhDvXH2nTBi9EpPVRdHg6gE', NULL, NULL, '2026-10-26 16:00:27', NULL, NULL, NULL, NULL, NULL, '2026-10-26 15:50:27'),
+(361, 'CSF-KTEA52', '77f471ebb15c342eebe6cedff2ce3dba', 248, 3, '2026-10-27', '18:50:00', 2, 1, 'E7', 220, 110, 330, 'paid', 'ordered', 1, NULL, NULL, NULL, 'pi_h77rh779Aygcnf2daxVVJW4t', NULL, 'pi_mZYrSSKweqjrP2TvsUdVqVZT', 'pay_MkY7eLLmk7kT3dz9o4JDQGHW', NULL, '2026-10-27 11:55:50', '2026-10-27 11:45:59', NULL, NULL, NULL, NULL, '2026-10-27 11:45:50'),
+(362, 'CSF-C7F44J', '6791a20cccccbcdc8890c6a772095d2e', 248, 2, '2026-10-27', '16:05:00', 1, 1, 'B5', 220, 110, 330, 'paid', 'ordered', 2, NULL, NULL, NULL, 'pi_275PGbsdZ9cBZr3yqx8EAbMf', NULL, 'pi_mY1jfdp3a25GMdrQeXichdT5', 'pay_3eNjLp6Roth53ubtw2MAx5kd', NULL, '2026-10-27 11:56:29', '2026-10-27 11:49:28', NULL, NULL, NULL, NULL, '2026-10-27 11:46:29'),
+(363, 'CSF-VMG82H', '55ea08fe9ee811cf1b2beb24ca543344', 248, 2, '2026-10-30', '16:05:00', 1, 1, 'E5', 220, 0, 220, 'paid', NULL, NULL, NULL, NULL, NULL, 'pi_FicRXn6cntbJPzScfHJZWDjS', NULL, 'pi_PY89Bbnu8MvhtvgJejWx4NmC', 'pay_CCqAnbENrCNAWGF7xerQH7tB', NULL, '2026-10-30 00:45:01', '2026-10-30 00:35:14', NULL, NULL, NULL, NULL, '2026-10-30 00:35:01');
 
 -- --------------------------------------------------------
 
@@ -88,7 +103,19 @@ CREATE TABLE `booking_seats` (
 --
 
 INSERT INTO `booking_seats` (`id`, `booking_id`, `movie_id`, `show_date`, `show_time`, `seat_code`) VALUES
-(381, 347, 1, '2026-10-31', '18:10:00', 'F7');
+(382, 348, 1, '2026-10-18', '18:10:00', 'D4'),
+(383, 349, 1, '2026-10-18', '18:10:00', 'D5'),
+(384, 350, 1, '2026-10-18', '18:10:00', 'D6'),
+(385, 351, 2, '2026-10-19', '16:05:00', 'E3'),
+(386, 352, 2, '2026-10-19', '16:05:00', 'E4'),
+(387, 353, 2, '2026-10-19', '16:05:00', 'E5'),
+(388, 354, 3, '2026-10-17', '14:25:00', 'C5'),
+(389, 355, 3, '2026-10-17', '14:25:00', 'C6'),
+(390, 356, 7, '2026-10-20', '21:05:00', 'F7'),
+(391, 357, 7, '2026-10-20', '21:05:00', 'F8'),
+(395, 361, 3, '2026-10-27', '18:50:00', 'E7'),
+(396, 362, 2, '2026-10-27', '16:05:00', 'B5'),
+(397, 363, 2, '2026-10-30', '16:05:00', 'E5');
 
 -- --------------------------------------------------------
 
@@ -108,167 +135,9 @@ CREATE TABLE `booking_snacks` (
 --
 
 INSERT INTO `booking_snacks` (`booking_id`, `snack_id`, `quantity`, `unit_price`) VALUES
-(347, 1, 1, 110);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `login_attempts`
---
-
-CREATE TABLE `login_attempts` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `bucket` varchar(40) NOT NULL,
-  `identifier` varchar(190) NOT NULL,
-  `ip_address` varchar(45) NOT NULL,
-  `attempted_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `bucket`, `identifier`, `ip_address`, `attempted_at`) VALUES
-(3399, 'otp', 'myrtepacia@gmail.com', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 18:47:56'),
-(3400, 'reset', 'tepacia18@gmail.com', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 18:49:25'),
-(3401, 'seats', '', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 18:53:34'),
-(3402, 'checkout', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 18:53:39'),
-(3403, 'checkout', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 18:53:44'),
-(3404, 'pay-check', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 18:53:46'),
-(3405, 'settle', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 18:53:51'),
-(3406, 'seats', '', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:09:51'),
-(3407, 'seats', '', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:09:53'),
-(3408, 'checkout', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:09:54'),
-(3409, 'checkout', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:09:59'),
-(3410, 'pay-check', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:10:01'),
-(3411, 'settle', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:10:06'),
-(3412, 'reset', 'tepacia18@gmail.com', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:11:51'),
-(3413, 'otp', 'myrtepacia@gmail.com', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:12:27'),
-(3414, 'seats', '', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:26:00'),
-(3415, 'seats', '', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:26:07'),
-(3416, 'checkout', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:26:08'),
-(3417, 'checkout', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:26:13'),
-(3418, 'pay-check', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:26:15'),
-(3419, 'settle', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:26:19'),
-(3420, 'seats', '', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:34:55'),
-(3421, 'checkout', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:34:59'),
-(3422, 'checkout', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:35:03'),
-(3423, 'pay-check', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:35:06'),
-(3424, 'settle', 'user:248', '2405:8d40:4cc8:2997:fdf2:2c26:c41:6fcb', '2026-10-14 19:35:10'),
-(3425, 'seats', '', '49.145.43.200', '2026-10-14 23:19:28'),
-(3426, 'seats', '', '49.145.43.200', '2026-10-14 23:19:36'),
-(3427, 'seats', '', '49.145.43.200', '2026-10-14 23:19:46'),
-(3428, 'seats', '', '49.145.43.200', '2026-10-14 23:19:56'),
-(3429, 'seats', '', '49.145.43.200', '2026-10-14 23:20:06'),
-(3430, 'signin', 'marygwenxx@gmail.com', '49.145.43.200', '2026-10-14 23:20:38'),
-(3431, 'signin', 'marygwenxx@gmail.com', '49.145.43.200', '2026-10-14 23:22:10'),
-(3432, 'otp', 'marygwenxx@gmail.com', '49.145.43.200', '2026-10-14 23:24:01'),
-(3433, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 01:51:45'),
-(3434, 'checkout', 'user:248', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 01:51:48'),
-(3435, 'checkout', 'user:248', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 01:51:54'),
-(3436, 'pay-check', 'user:248', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 01:51:56'),
-(3437, 'settle', 'user:248', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 01:52:01'),
-(3438, 'scan', '', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 01:52:17'),
-(3439, 'settle', 'user:248', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 01:52:57'),
-(3440, 'settle', 'user:248', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 01:53:29'),
-(3441, 'scan', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 01:54:01'),
-(3442, 'scan', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 01:58:39'),
-(3443, 'scan', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 01:59:31'),
-(3444, 'scan', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 02:01:08'),
-(3445, 'scan', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 02:02:21'),
-(3446, 'seats', '', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 02:05:53'),
-(3447, 'checkout', 'user:248', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 02:06:00'),
-(3448, 'seats', '', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 02:06:07'),
-(3449, 'checkout', 'user:248', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 02:06:11'),
-(3450, 'checkout', 'user:248', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 02:06:17'),
-(3451, 'pay-check', 'user:248', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 02:06:19'),
-(3452, 'settle', 'user:248', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 02:06:25'),
-(3453, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:36:08'),
-(3454, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:36:15'),
-(3455, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:36:25'),
-(3456, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:36:35'),
-(3457, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:38:04'),
-(3458, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:38:04'),
-(3459, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:38:05'),
-(3460, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:38:16'),
-(3461, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:38:26'),
-(3462, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:38:33'),
-(3463, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:39:34'),
-(3464, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:39:34'),
-(3465, 'seats', '', '2405:8d40:4cd3:3476:99d7:f28a:451e:554e', '2026-10-15 03:39:45'),
-(3466, 'seats', '', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 03:49:21'),
-(3467, 'seats', '', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 03:49:25'),
-(3468, 'checkout', 'user:248', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 03:49:28'),
-(3469, 'pay-check', 'user:248', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 03:49:35'),
-(3470, 'checkout', 'user:248', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 03:49:37'),
-(3471, 'pay-check', 'user:248', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 03:49:39'),
-(3472, 'settle', 'user:248', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 03:49:48'),
-(3473, 'otp', 'myrtepacia@gmail.com', '2405:8d40:4cd3:3476:18de:6911:c03b:952', '2026-10-15 03:51:11'),
-(3474, 'seats', '', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:30:37'),
-(3475, 'seats', '', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:30:39'),
-(3476, 'checkout', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:30:50'),
-(3477, 'pay-check', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:30:59'),
-(3478, 'checkout', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:31:00'),
-(3479, 'pay-check', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:31:03'),
-(3480, 'settle', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:31:13'),
-(3481, 'scan', '', '2405:8d40:4cd8:f2f:18de:9717:83e:667', '2026-10-15 14:31:52'),
-(3482, 'scan', '', '2405:8d40:4cd8:f2f:18de:9717:83e:667', '2026-10-15 14:32:24'),
-(3483, 'scan', '', '2405:8d40:4cd8:f2f:18de:9717:83e:667', '2026-10-15 14:32:25'),
-(3484, 'scan', '', '2405:8d40:4cd8:f2f:18de:9717:83e:667', '2026-10-15 14:32:29'),
-(3485, 'settle', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:32:38'),
-(3486, 'scan', '', '2405:8d40:4cd8:f2f:18de:9717:83e:667', '2026-10-15 14:32:43'),
-(3487, 'seats', '', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:32:55'),
-(3488, 'checkout', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:32:58'),
-(3489, 'checkout', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:33:06'),
-(3490, 'pay-check', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:33:09'),
-(3491, 'settle', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:33:17'),
-(3492, 'scan', '', '2405:8d40:4cd8:f2f:18de:9717:83e:667', '2026-10-15 14:33:22'),
-(3493, 'scan', '', '2405:8d40:4cd8:f2f:18de:9717:83e:667', '2026-10-15 14:33:24'),
-(3494, 'scan', '', '2405:8d40:4cd8:f2f:18de:9717:83e:667', '2026-10-15 14:33:28'),
-(3495, 'scan', '', '2405:8d40:4cd8:f2f:18de:9717:83e:667', '2026-10-15 14:34:03'),
-(3496, 'seats', '', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:34:49'),
-(3497, 'seats', '', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:34:52'),
-(3498, 'checkout', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:34:52'),
-(3499, 'checkout', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:34:58'),
-(3500, 'pay-check', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:35:01'),
-(3501, 'settle', 'user:248', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:35:05'),
-(3502, 'scan', '', '2405:8d40:4cd8:f2f:18de:9717:83e:667', '2026-10-15 14:35:08'),
-(3503, 'scan', '', '2405:8d40:4cd8:f2f:18de:9717:83e:667', '2026-10-15 14:35:11'),
-(3504, 'scan', '', '2405:8d40:4cd8:f2f:18de:9717:83e:667', '2026-10-15 14:35:23'),
-(3505, 'reset', 'tepacia18@gmail.com', '2405:8d40:4cd8:f2f:b9d1:c898:79f4:bd46', '2026-10-15 14:36:04'),
-(3506, 'seats', '', '2001:fd8:c208:9d00:b11a:e8df:a2dc:cdd', '2026-10-15 19:28:36'),
-(3507, 'seats', '', '2001:fd8:c208:9d00:b11a:e8df:a2dc:cdd', '2026-10-15 19:28:43'),
-(3508, 'seats', '', '2001:fd8:c208:9d00:b11a:e8df:a2dc:cdd', '2026-10-15 19:28:53'),
-(3509, 'seats', '', '2001:fd8:c208:9d00:b11a:e8df:a2dc:cdd', '2026-10-15 19:29:03'),
-(3510, 'checkout', 'user:248', '2001:fd8:c208:9d00:b11a:e8df:a2dc:cdd', '2026-10-15 19:29:23'),
-(3511, 'checkout', 'user:248', '2001:fd8:c208:9d00:b11a:e8df:a2dc:cdd', '2026-10-15 19:29:29'),
-(3512, 'pay-check', 'user:248', '2001:fd8:c208:9d00:b11a:e8df:a2dc:cdd', '2026-10-15 19:29:32'),
-(3513, 'settle', 'user:248', '2001:fd8:c208:9d00:b11a:e8df:a2dc:cdd', '2026-10-15 19:29:36'),
-(3514, 'seats', '', '2001:fd8:c208:9d00:e063:399b:533e:7191', '2026-10-16 00:25:12'),
-(3515, 'seats', '', '2001:fd8:c208:9d00:e063:399b:533e:7191', '2026-10-16 00:25:19'),
-(3516, 'seats', '', '2001:fd8:c208:9d00:e063:399b:533e:7191', '2026-10-16 00:25:45'),
-(3517, 'settle', 'user:248', '2001:fd8:c208:9d00:e063:399b:533e:7191', '2026-10-16 00:25:47'),
-(3518, 'settle', 'user:248', '2001:fd8:c208:9d00:e063:399b:533e:7191', '2026-10-16 01:01:13'),
-(3519, 'settle', 'user:248', '2001:fd8:c208:9d00:8456:d5c2:a6e3:f893', '2026-10-16 01:38:05'),
-(3520, 'otp', 'myrtepacia@gmail.com', '180.190.4.47', '2026-10-16 14:03:22'),
-(3521, 'reset', 'tepacia18@gmail.com', '180.190.4.47', '2026-10-16 14:04:30'),
-(3523, 'seats', '', '2001:fd8:c208:9d00:a95d:f9bb:849a:bf78', '2026-10-16 14:05:55'),
-(3524, 'seats', '', '2001:fd8:c208:9d00:a95d:f9bb:849a:bf78', '2026-10-16 14:05:58'),
-(3525, 'seats', '', '2001:fd8:c208:9d00:a95d:f9bb:849a:bf78', '2026-10-16 14:06:02'),
-(3526, 'seats', '', '2001:fd8:c208:9d00:a95d:f9bb:849a:bf78', '2026-10-16 14:06:06'),
-(3527, 'seats', '', '2001:fd8:c208:9d00:a95d:f9bb:849a:bf78', '2026-10-16 14:06:13'),
-(3528, 'checkout', 'user:248', '2001:fd8:c208:9d00:a95d:f9bb:849a:bf78', '2026-10-16 14:06:21'),
-(3529, 'pay-check', 'user:248', '2001:fd8:c208:9d00:a95d:f9bb:849a:bf78', '2026-10-16 14:06:30'),
-(3530, 'checkout', 'user:248', '2001:fd8:c208:9d00:a95d:f9bb:849a:bf78', '2026-10-16 14:06:31'),
-(3531, 'pay-check', 'user:248', '2001:fd8:c208:9d00:a95d:f9bb:849a:bf78', '2026-10-16 14:06:33'),
-(3532, 'settle', 'user:248', '2001:fd8:c208:9d00:a95d:f9bb:849a:bf78', '2026-10-16 14:06:39'),
-(3534, 'seats', '', '110.54.173.202', '2026-10-19 14:16:28'),
-(3535, 'seats', '', '110.54.173.202', '2026-10-19 14:16:31'),
-(3536, 'seats', '', '110.54.173.202', '2026-10-19 14:16:41'),
-(3537, 'seats', '', '112.203.129.175', '2026-10-21 12:51:54'),
-(3538, 'seats', '', '112.203.129.175', '2026-10-21 12:51:58'),
-(3539, 'settle', 'user:248', '2405:8d40:4cd2:75b4:c5ad:73cf:bce6:ac75', '2026-10-21 18:46:20'),
-(3540, 'seats', '', '2405:8d40:4cd2:75b4:c5ad:73cf:bce6:ac75', '2026-10-21 19:49:25');
+(360, 1, 1, 110),
+(361, 1, 1, 110),
+(362, 1, 1, 110);
 
 -- --------------------------------------------------------
 
@@ -423,22 +292,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `mobile`, `password_hash`, `role`, `created_at`, `last_login_at`) VALUES
-(1, 'CSFlix Admin', 'admin@gmail.com', NULL, '$argon2id$v=19$m=65536,t=4,p=1$eUdrZHFzVWg2NTE1WUkzcg$zDo9ZNprzS9DY82fcQ1ll7ln13YKxPJU3HpSk9mh6Gk', 'admin', '2026-09-28 01:06:42', '2026-10-18 16:33:15'),
-(2, 'Ticket Scanner', 'scanner@gmail.com', NULL, '$argon2id$v=19$m=65536,t=4,p=1$cElQWXJZOHpnQmJ5VnV6dA$wRw2G5rfEmpl1AVrpsbxB5ehIYtb0GUSB7VnYGPy8A4', 'scanner', '2026-09-28 01:06:42', '2026-10-02 20:42:24'),
-(248, 'Henmyr Vincent L. Tepacia', 'tepacia18@gmail.com', '09940398477', '$argon2id$v=19$m=65536,t=4,p=1$cWNBR0doR0tid3FNaXFUcA$5JORClpTcx/LNA43z1/a38Z6H0NLmRNjGAPoRtWT3HA', 'customer', '2026-10-10 12:38:04', '2026-10-21 19:48:09'),
-(250, 'Samantha May Wenham', 'wsamanthamay@gmail.com', '09069739089', '$argon2id$v=19$m=65536,t=4,p=1$TGpRUldOR3dscWMyM21ENA$g7pReSb6QlZcfteeyEievNU9DS7SLg4QDKk6qC9a36M', 'customer', '2026-10-14 13:04:36', '2026-10-14 13:04:36');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `webhook_events`
---
-
-CREATE TABLE `webhook_events` (
-  `event_id` varchar(64) NOT NULL,
-  `event_type` varchar(80) NOT NULL,
-  `received_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(1, 'CSFlix Admin', 'admin@gmail.com', NULL, '$argon2id$v=19$m=65536,t=4,p=1$eUdrZHFzVWg2NTE1WUkzcg$zDo9ZNprzS9DY82fcQ1ll7ln13YKxPJU3HpSk9mh6Gk', 'admin', '2026-09-28 01:06:42', '2026-10-29 00:36:24'),
+(248, 'Henmyr Vincent L. Tepacia', 'tepacia18@gmail.com', '09940398477', '$argon2id$v=19$m=65536,t=4,p=1$cWNBR0doR0tid3FNaXFUcA$5JORClpTcx/LNA43z1/a38Z6H0NLmRNjGAPoRtWT3HA', 'customer', '2026-10-10 12:38:04', '2026-10-30 00:34:51'),
+(250, 'Samantha May Wenham', 'wsamanthamay@gmail.com', '09069739089', '$argon2id$v=19$m=65536,t=4,p=1$TGpRUldOR3dscWMyM21ENA$g7pReSb6QlZcfteeyEievNU9DS7SLg4QDKk6qC9a36M', 'customer', '2026-10-14 13:04:36', '2026-10-14 13:04:36'),
+(251, 'Carl Doro-on', 'carlruizdoroon16@gmail.com', '09565575986', '$argon2id$v=19$m=65536,t=4,p=1$NFNsSHBWZ1RPcmtIQkNUeA$2OhF8lQt0famNr/NCzqe0D4ByUF/XeXx03CiXizk6kc', 'customer', '2026-10-21 20:04:37', '2026-10-21 23:47:37'),
+(252, 'Mary Gwen Manos', 'cmarygwenxx@gmail.com', '09750926842', '$argon2id$v=19$m=65536,t=4,p=1$MDV0a0duaGMxaGJxQzk2RQ$b3CxMfBcHql+2TbeHreoaGKbsataDHa2yW5EBxjlP6A', 'customer', '2026-10-21 20:04:38', NULL),
+(253, 'Altheo Miguel Ticon', 'altheoticon@gmail.com', '09750926842', '$argon2id$v=19$m=65536,t=4,p=1$SktEWm1HbFVFQ3hlTjJrLg$JewjIVd7M1dFKM0BqEAPLhKbc8gb7EzCSSLXD0GiG10', 'customer', '2026-10-21 20:04:38', NULL),
+(254, 'Jay Moen Redula', 'jaysirfilms@gmail.com', '09933915216', '$argon2id$v=19$m=65536,t=4,p=1$NUNPRUFNWFR5N0R2SXYwSg$ZtvpSB6CxIsAOXgXfXhRWZXb8zHHw7cPZZlwlFBqwCE', 'customer', '2026-10-21 20:04:38', NULL),
+(255, 'Jan Nina Dalogdog', 'janninadalogdog@gmail.com', '09533176308', '$argon2id$v=19$m=65536,t=4,p=1$UG1pZm1VbHRmdUFPdldtdQ$yQ7qncO7w3rBheO1CufaXeGh+a8b/r5dy9zPaU7+dxA', 'customer', '2026-10-21 20:14:08', NULL),
+(256, 'Gem Kristly Go', 'kristlygocadz.gem@gmail.com', '09707218599', '$argon2id$v=19$m=65536,t=4,p=1$ZkFvcllFWWgyZC93UWFaNw$JZCe8Qd3tNa6MJamSZlLhQLAdI3oBSNR8JSrIvxqKWM', 'customer', '2026-10-21 20:14:08', NULL),
+(257, 'Cristianery Khim Guzman', 'gzcristian031706@gmail.com', '09702869877', '$argon2id$v=19$m=65536,t=4,p=1$TmhmbVRqUEI2ajZBaTYvVA$nDqzbSnzlQ02idXBjxXGAB/yyjiiU6RfaFomaaZi1es', 'customer', '2026-10-21 20:14:08', NULL),
+(258, 'Crist Sean Salac', 'seansalac63@gmail.com', '09690956091', '$argon2id$v=19$m=65536,t=4,p=1$d29XSDYyYmlHWEx1UVZBbg$GceBBupAQwIOk+NAwfwvZ1RmOI64O+K2tzo11XxMBlc', 'customer', '2026-10-21 20:14:08', NULL);
 
 --
 -- Indexes for dumped tables
@@ -477,14 +341,6 @@ ALTER TABLE `booking_snacks`
   ADD KEY `fk_booking_snacks_snack` (`snack_id`);
 
 --
--- Indexes for table `login_attempts`
---
-ALTER TABLE `login_attempts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_attempts_lookup` (`bucket`,`identifier`,`attempted_at`),
-  ADD KEY `idx_attempts_ip` (`bucket`,`ip_address`,`attempted_at`);
-
---
 -- Indexes for table `movies`
 --
 ALTER TABLE `movies`
@@ -520,12 +376,6 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `uq_users_email` (`email`);
 
 --
--- Indexes for table `webhook_events`
---
-ALTER TABLE `webhook_events`
-  ADD PRIMARY KEY (`event_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -533,31 +383,25 @@ ALTER TABLE `webhook_events`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=348;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=364;
 
 --
 -- AUTO_INCREMENT for table `booking_seats`
 --
 ALTER TABLE `booking_seats`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=382;
-
---
--- AUTO_INCREMENT for table `login_attempts`
---
-ALTER TABLE `login_attempts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3541;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=398;
 
 --
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `showtimes`
 --
 ALTER TABLE `showtimes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- AUTO_INCREMENT for table `snacks`
@@ -575,7 +419,7 @@ ALTER TABLE `snack_categories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=260;
 
 --
 -- Constraints for dumped tables
