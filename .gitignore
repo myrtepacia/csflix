@@ -1,0 +1,18 @@
+# Secrets (.env.example is the template that goes to GitHub)
+/.env
+/config/config.php
+
+# Error logs and cached PayMongo answers (.keep keeps the folder)
+/storage/logs/*
+!/storage/logs/.keep
+/storage/cache/
+
+# Editor and system files
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Full database copy for cPanel (customer details and password hashes)
+database/csflix.sql

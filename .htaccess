@@ -1,0 +1,70 @@
+# CSFlix web server rules
+
+# No folder listings or server version
+Options -Indexes -Includes -ExecCGI
+ServerSignature Off
+
+# Addresses without ".php": /book?movie=x runs book.php
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Old links move to the clean address (only GET: forms may still post to
+    # either). A film's page: book.php?movie=hush becomes /hush
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*/)?)book(?:\.php)?\?movie=([a-z0-9-]+)(?:&(\S*))?\s [NC]
+    RewriteRule ^ /%1%2?%3 [R=301,L,NE]
+
+    # A booking's pages: pay.php?ref=CSF-ABC234 becomes /pay/CSF-ABC234
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*/)?)(pay|card|ticket|payment-success|payment-cancel)(?:\.php)?\?ref=([A-Za-z0-9-]+)(?:&(\S*))?\s [NC]
+    RewriteRule ^ /%1%2/%3?%4 [R=301,L,NE]
+
+    # Bookmarks, PayMongo returns: terms.php becomes /terms
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+    RewriteCond %{THE_REQUEST} \s/+((?:[^?\s]*/)?)index\.php[?\s] [NC]
+    RewriteRule ^ /%1 [R=301,L,NE]
+
+    RewriteCond %{REQUEST_METHOD} ^(GET|HEAD)$
+    RewriteCond %{THE_REQUEST} \s/+([^?\s]+?)\.php[?\s] [NC]
+    RewriteRule ^ /%1 [R=301,L,NE]
+
+    # A booking's page with its reference: /pay/CSF-ABC234 runs pay.php
+    RewriteRule ^(pay|card|ticket|payment-success|payment-cancel)/([A-Za-z0-9-]+)/?$ $1.php?ref=$2 [QSA,L]
+
+    # A clean address runs its .php file, if there is one. Only a page name
+    # (/terms) or a page in admin/ or api/, so a deeper address like
+    # /terms/x is "not found" rather than looping
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.php -f
+    RewriteRule ^((?:admin/|api/)?[^/.]+?)/?$ $1.php [L]
+
+    # Anything else that looks like a film's name opens its booking page
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^([a-z0-9-]+)/?$ book.php?movie=$1 [QSA,L]
+
+    # Anything else that is not a real file or folder: "Page not found"
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ 404.php [L]
+</IfModule>
+
+# The app manifest phones read to install the site
+<IfModule mod_mime.c>
+    AddType application/manifest+json .webmanifest
+</IfModule>
+
+# Never serve source, notes, logs or dotfiles
+<FilesMatch "(^\.|\.(?i:sql|md|log|bak|old|orig|swp|ini|lock|sh|bat|ps1|dist)$|^(?i:composer|package(-lock)?)\.json$)">
+    Require all denied
+</FilesMatch>
+
+# Same safety headers as the PHP pages
+<IfModule mod_headers.c>
+    <FilesMatch "\.(?i:css|js|png|jpe?g|webp|gif|svg|ico|txt|woff2?|html)$">
+        Header always set X-Content-Type-Options "nosniff"
+        Header always set X-Frame-Options "DENY"
+        Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    </FilesMatch>
+    Header always unset X-Powered-By
+</IfModule>

@@ -1,0 +1,204 @@
+<?php
+declare(strict_types=1);
+
+require __DIR__ . '/includes/bootstrap.php';
+
+$user = require_login();
+
+$ref = normalize_reference(input_string($_GET, 'ref', 20));
+if ($ref === null) {
+    abort(404);
+}
+
+$booking = null;
+if ($user['role'] === 'customer') {
+    $booking = find_user_booking((int) $user['id'], $ref);
+} elseif ($user['role'] === 'admin') {
+    $booking = find_booking($ref);
+}
+if ($booking === null) {
+    abort(404);
+}
+
+$status = (string) $booking['status'];
+$ownBooking = (int) $booking['user_id'] === (int) $user['id'];
+
+// Still unpaid: back to the payment page
+if ($status === 'pending' && $ownBooking) {
+    $paying = paymongo_uses_qrph() || !empty($booking['paymongo_intent_id']) ? 'pay.php' : 'payment-success.php';
+    redirect($paying . '?ref=' . rawurlencode($ref));
+}
+
+// Book Another goes back to the film if it can still be booked
+$movie = find_movie((int) $booking['movie_id']);
+$bookAnother = ($movie !== null && movie_booking_window($movie) !== null)
+    ? 'book.php?movie=' . rawurlencode((string) $movie['slug'])
+    : 'index.php';
+
+$hasTicket = in_array($status, ['paid', 'refunded'], true);
+
+// Straight from paying (payment-success.php, api/payment-status.php): a
+// loading circle first, then the ticket. Once only, not on a reload.
+$justPaid = $status === 'paid' && ($_SESSION['just_paid'] ?? null) === $ref;
+unset($_SESSION['just_paid']);
+
+
+if ($hasTicket) {
+    $snackLines = booking_snacks((int) $booking['id']);
+    $snacks = snack_summary($snackLines);
+    // The snack order number, on paid tickets only
+    $snackNumber = $status === 'paid' && $booking['snack_number'] !== null
+        ? '#' . snack_number_label((int) $booking['snack_number'])
+        : null;
+    $snackStatus = [
+        'ordered'   => ['Show this QR code at the snack counter', 'snack-status-ordered'],
+        'preparing' => ['Preparing', 'snack-status-preparing'],
+        'ready'     => ['Ready at the counter', 'snack-status-ready'],
+        'sold'      => ['Picked up', 'snack-status-sold'],
+    ][(string) ($booking['snack_status'] ?? '')] ?? null;
+}
+
+// Why there is no ticket
+$noTicketMessages = [
+    'pending'   => 'Booking %s for %s is still waiting for payment. The ticket appears once PayMongo confirms it.',
+    'expired'   => 'Booking %s for %s was not paid in time, so no ticket was issued and its seats went back on sale.',
+    'cancelled' => 'Booking %s for %s was cancelled before payment, so no ticket was issued and its seats went back on sale.',
+];
+
+render_head($hasTicket ? 'Your E-Ticket' : 'Booking ' . $ref, ['assets/css/public.css']);
+render_header();
+?>
+  <main class="ticket-page">
+<?php if ($justPaid): ?>
+    <!-- Covers the page: the circle spins, turns into a check mark, then
+         everything fades away to the ticket (CSS only) -->
+    <div class="ticket-loading" role="status">
+      <div class="ticket-loading-mark">
+        <div class="ticket-loading-circle"></div>
+        <svg class="ticket-loading-check" viewBox="0 0 56 56" aria-hidden="true">
+          <circle cx="28" cy="28" r="25.5"/>
+          <path d="M17 29l7.5 7.5L39 22"/>
+        </svg>
+      </div>
+      <p class="ticket-loading-text">
+        <span class="ticket-loading-wait" aria-hidden="true">Confirming your payment&hellip;</span>
+        <span class="ticket-loading-done">Payment successful!</span>
+      </p>
+    </div>
+<?php endif; ?>
+
+<?php if (!$hasTicket): ?>
+    <div class="confirm-box">
+      <h1>No Ticket for This Booking</h1>
+      <p><?= e(sprintf($noTicketMessages[$status] ?? 'Booking %s for %s has no ticket.', $ref, $booking['title'])) ?></p>
+    </div>
+
+    <div class="ticket-actions">
+      <a class="button button-outline" href="<?= e(url('index.php')) ?>">Back to Movies</a>
+      <a class="button button-red" href="<?= e(url($bookAnother)) ?>">Book Again</a>
+    </div>
+<?php else: ?>
+    <div id="ticket-wrap">
+
+<?php if ($status === 'refunded'): ?>
+      <div class="confirm-box">
+        <h1>Booking Refunded</h1>
+        <p>This ticket is no longer valid.</p>
+      </div>
+<?php else: ?>
+      <div class="confirm-box">
+        <h1>Your E-Ticket</h1>
+<?php if ($booking['scanned_at'] !== null): ?>
+        <p>This ticket has already been used.</p>
+<?php endif; ?>
+      </div>
+<?php endif; ?>
+
+      <div class="ticket">
+
+        <div class="ticket-header">
+          <div class="ticket-brand-row">
+            <p class="ticket-brand">CSFLIX</p>
+            <p class="ticket-cinema" id="cinema"><?= e(cinema_label((int) $booking['cinema'])) ?></p>
+          </div>
+          <h2 id="movie-title"><?= e($booking['title']) ?></h2>
+          <p class="ticket-when" id="showtime"><?= e(format_showing((string) $booking['show_date'], (string) $booking['show_time'])) ?></p>
+        </div>
+
+        <div class="ticket-tear"></div>
+
+        <div class="ticket-body">
+
+          <div class="ticket-pair">
+            <div>
+              <p class="ticket-label">Reference No.</p>
+              <p class="ticket-value ticket-reference" id="reference"><?= e($booking['reference']) ?></p>
+            </div>
+            <div>
+              <p class="ticket-label">Seat(s)</p>
+              <p class="ticket-value" id="seats"><?= e($booking['seat_list']) ?></p>
+            </div>
+          </div>
+
+          <div class="ticket-pair">
+            <div>
+              <p class="ticket-label">Name</p>
+              <p class="ticket-value ticket-value-small" id="customer-name"><?= e($booking['customer_name']) ?></p>
+            </div>
+            <div>
+              <p class="ticket-label"><?= $status === 'refunded' ? 'Refunded' : 'Total Paid' ?></p>
+              <p class="ticket-value" id="total"><?= e(peso((int) $booking['total'])) ?></p>
+            </div>
+          </div>
+
+<?php if ($snacks !== ''): ?>
+          <div class="ticket-pair" id="snack-pair">
+            <div>
+              <p class="ticket-label">Pickup Number</p>
+<?php if ($snackNumber !== null): ?>
+              <p class="ticket-value" id="pickup-number"><?= e($snackNumber) ?></p>
+<?php else: ?>
+              <!-- Refunded, or ordered before numbers existed -->
+              <p class="ticket-value ticket-value-small" id="pickup-number"><?= $status === 'refunded' ? 'Refunded' : 'None' ?></p>
+<?php endif; ?>
+            </div>
+            <div>
+              <p class="ticket-label">Snacks</p>
+              <p class="ticket-value ticket-value-small" id="snacks"><?= e($snacks) ?></p>
+            </div>
+          </div>
+<?php if ($status === 'paid' && $snackStatus !== null): ?>
+          <p class="snack-status <?= e($snackStatus[1]) ?>" id="snack-status"><?= e($snackStatus[0]) ?></p>
+<?php endif; ?>
+<?php endif; ?>
+
+<?php if ($status === 'paid'): ?>
+          <div class="ticket-qr">
+            <img id="qr" class="ticket-qr-code" width="180" height="180"
+                 src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                 alt="QR code for booking <?= e($booking['reference']) ?>"
+                 data-qr="<?= e(ticket_qr_payload($booking)) ?>">
+            <noscript><p class="ticket-qr-noscript">Turn on JavaScript to show the QR code.</p></noscript>
+          </div>
+<?php endif; ?>
+
+        </div>
+      </div>
+
+<?php if ($status === 'refunded'): ?>
+      <p class="form-message form-message-notice ticket-note" id="refund-note">
+        This booking was refunded<?= !empty($booking['refunded_at']) ? ' on ' . e(format_datetime((string) $booking['refunded_at'])) : '' ?>. Its QR code can no longer be used at the door.
+      </p>
+<?php endif; ?>
+
+      <div class="ticket-actions">
+        <a class="button button-outline" href="<?= e(url('index.php')) ?>">Back to Movies</a>
+        <a class="button button-red" id="book-another" href="<?= e(url($bookAnother)) ?>">Book Another</a>
+      </div>
+
+    </div>
+<?php endif; ?>
+
+  </main>
+
+<?php render_footer($status === 'paid' ? ['js' => ['assets/vendor/qrcode.js', 'assets/js/ticket.js']] : []);

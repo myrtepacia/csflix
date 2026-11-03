@@ -1,0 +1,9 @@
+# Pictures only: nothing here may run as code or be served as a page.
+# Rewrites only, since free hosts like InfinityFree refuse the whole file
+# over Options, php_flag, Require or Header lines.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Only files named like Add Movie names them (Broken-of-Love.jpg)
+    RewriteRule !^[A-Za-z0-9-]+\.(jpg|png|webp)$ - [F]
+</IfModule>
